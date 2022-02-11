@@ -2,6 +2,8 @@
 // ----- CORS ----- //
 const cors = require('cors');
 const express = require("express");
+const snackController = require("./controllers/snackController.js")
+
 
 // CONFIGURATION
 const app = express();
@@ -16,6 +18,8 @@ require("dotenv").config();
 app.get("/", (request, response) => {
     response.send("Get Snack'n at Snack-a-log!")
 })
+
+app.use("/snacks", snackController);
 
 app.get("*", (request, response) => {
     response.status(404).send("Page not found");
