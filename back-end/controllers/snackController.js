@@ -66,4 +66,4 @@ snacks.put("/:id", async(req, res)=>{
     }
 })
 
-module.exports = Snack;
+module.exports = snacks;
