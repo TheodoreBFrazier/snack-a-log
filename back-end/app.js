@@ -11,15 +11,15 @@ const app = express();
 // MIDDLEWARE
 app.use(cors());
 app.use(express.json());
-require("dotenv").config();
+app.use("/snacks", snackController);
+// require("dotenv").config();
 
 // ROUTES
 
 app.get("/", (request, response) => {
-    response.send("Get Snack'n at Snack-a-log!")
-})
+    response.send("Get Snack'n at Snack-a-log!");
+});
 
-app.use("/snacks", snackController);
 
 app.get("*", (request, response) => {
     response.status(404).send("Page not found");

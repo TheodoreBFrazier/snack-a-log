@@ -1,44 +1,44 @@
-const { response, request } = require("express")
-const express = require("express")
-const { getAllSnacks, oneSnack, createSnack, updateSnack, deleteSnack } = require("../queries/snacks")
-const snacks = express.Router
+const express = require("express");
+const snacks = express.Router();
+const { getAllSnacks, getSnack, createSnack, deleteSnack, updateSnack } = require("../queries/snacks");
+const { checkName, checkFavorite } = require("../validations/checkSnacks.js");
+
 
 snacks.get("/", async (request, response) => {
     try{
-        const allSnacks = await getAllSnacks()
+        const allSnacks = await getAllSnacks();
         if(allSnacks[0]) {
-            response.status(200).json(allSnacks)
+            response.status(200).json(allSnacks);
         } else {
-            response.status(400).json({error: "server error"})
+            response.status(500).json({ error: "server error" });
         }
     } catch (error) {
         console.lof(error)
     }
-})
+});
 
-snacks.get("/id", async (request, response) => {
+snacks.get("/:id", async (request, response) => {
     const { id } = request.params;
     try {
-        const snack = await oneSnack(id)
+        const snack = await getSnack(id);
         if(snack.id) {
             response.status(200).json(snack);
         } else {
-            response.status(400).json({error: "Snack not found"})
+            response.status(500).json({error: "Snack not found"});
         }
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
-})
+});
 
-snacks.post("/", async (request, response) => {
-    const { body } = req;
-
+snacks.post("/", checkName, checkFavorite, async (request, response) => {
+    const { body } = request;
     try {
         const createdSnack = await createSnack(body);
-        if (createdSnack) {
+        if (createdSnack.id) {
             response.status(200).json(createdSnack);
         } else {
-            response.status(400).json({error: "Snack create error"});
+            response.status(500).json({error: "Snack create error"});
         }
     } catch (error) {
         console.log(error)
@@ -48,7 +48,7 @@ snacks.post("/", async (request, response) => {
 snacks.delete("/:id", async(req, res)=>{
     const { id } = req.params;
     const deletedSnack = await deleteSnack(id);
-    if(deletedBookmark.id){
+    if(deletedSnack.id){
         res.status(200).json(deletedSnack);
     } else {
         res.status(404).json({error: "Snack not found"});
@@ -66,4 +66,4 @@ snacks.put("/:id", async(req, res)=>{
     }
 })
 
-module.exports = Snack;
+module.exports = snacks;
