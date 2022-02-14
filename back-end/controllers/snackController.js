@@ -13,7 +13,7 @@ snacks.get("/", async (request, response) => {
             response.status(500).json({ error: "server error" });
         }
     } catch (error) {
-        console.lof(error)
+        console.log(error)
     }
 });
 
