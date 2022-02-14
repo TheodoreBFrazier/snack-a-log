@@ -10,7 +10,7 @@ snacks.get("/", async (request, response) => {
         if(allSnacks[0]) {
             response.status(200).json(allSnacks);
         } else {
-            response.status(500).json({ error: "server error" });
+            response.status(500).json({ error: "server error!!" });
         }
     } catch (error) {
         console.log(error)
