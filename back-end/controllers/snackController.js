@@ -47,7 +47,7 @@ snacks.post("/", async (request, response) => {
         body = {...body, name: capitalization(body.name), is_healthy:confirmHealth(body)};
         const createdSnack = await createSnack(body);
         if (createdSnack.id) {
-            response.status(200).json({success:true, payload: createdSnack});
+            response.status(200).json({success: true, payload: createdSnack});
         } else {
             response.status(500).json({success: false, payload: "Snack create error"});
         }
@@ -68,7 +68,8 @@ snacks.delete("/:id", async(req, res)=>{
 
 snacks.put("/:id", async(req, res)=>{
     const { id } = req.params;
-    const { body } = req;
+    let { body } = req;
+    body = {...body, is_healthy: confirmHealth(body), name: capitalization(body.name)}
     const updatedSnack = await updateSnack(id, body);
     if(updatedSnack.id){
         res.status(200).json(updatedSnack);

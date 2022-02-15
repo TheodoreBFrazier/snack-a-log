@@ -10,10 +10,10 @@ function SnackNewForm() {
   const [snack, setSnack] = useState({
     name: "",
     image: "",
-    fiber: "",
-    protein: "",
-    added_sugar: "",
-    is_healthy: false,
+    fiber: 0,
+    protein: 0,
+    added_sugar: 0,
+    // is_healthy: false,
   });
 
   const addSnack = () => {
@@ -32,9 +32,9 @@ function SnackNewForm() {
     setSnack({ ...snack, [event.target.id]: event.target.value });
   };
 
-  const handleCheckboxChange = () => {
-    setSnack({ ...snack, is_healthy: !snack.is_healthy });
-  };
+  // const handleCheckboxChange = () => {
+  //   setSnack({ ...snack, is_healthy: !snack.is_healthy });
+  // };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -51,12 +51,12 @@ function SnackNewForm() {
           onChange={handleTextChange}
           required
          />
-         <label htmlFor="url">Image:</label>
+         <label htmlFor="image">Image:</label>
          <input
-           id="url"
+           id="image"
            type="text"
            pattern="http[s]*://.+"
-           value={snack.url}
+           value="image"
            placeholder="http://"
            onChange={handleTextChange}
          />
@@ -74,17 +74,17 @@ function SnackNewForm() {
          />
          <label htmlFor="added_sugar">Added Sugar:</label>
          <input
-           id="addedsugar"
+           id="added_sugar"
            type="number"
            value={snack.added_sugar}
          />
-         <label htmlFor="is_healthy">Healthy</label>
+         {/* <label htmlFor="is_healthy">Healthy</label>
          <input
            id="is_healthy"
            type="checkbox"
            onChange={handleCheckboxChange}
            checked={snack.is_healthy}
-         />
+         /> */}
 
          <br />
          <input type="submit" />

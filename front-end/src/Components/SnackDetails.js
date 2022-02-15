@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import solid from "../assets/heart-solid.png";
-import regular from "../assets/heart-regular.png";
+import HeartHealth from "./HeartHealth";
 
 
 const API = process.env.REACT_APP_API_URL;
@@ -31,26 +30,31 @@ function SnackDetails() {
   }
 
   return <article>
-    <div>{snack.is_healthy ? <span><img src={solid}/></span> : <span><img src={regular}/></span>}</div>
-    <div>{snack.name}</div>
-    <div><img src={snack.image} alt={snack.name}/></div>
-    <div>{snack.protein}</div>
-    <div>{snack.fiber}</div>
-    <div>{snack.added_sugar}</div>
-
-
+    <aside>
+    <h4>the snack health</h4>
+    <HeartHealth snackHealth={snack.is_healthy}/>
+    </aside>
     <div>
-      <Link to={`/snacks`}>
-        <button>Back</button>
-      </Link>
+      <h5>{snack.name}</h5>
+      <img src={snack.image} alt={snack.name}/>
+      <h6>Protein: {snack.protein}</h6>
+      <h6>Fiber: {snack.fiber}</h6>
+      <h6>Added Sugar: {snack.added_sugar}</h6>
     </div>
-    {/* <div>
-      <Link to={`/snacks/${snack.id}/edit`}>
-        <button>Edit</button>
-      </Link>
-    </div> */}
-    <div>
-      <button onClick={handleDelete}>Delete</button>
+    <div className="showNavigation">
+      <div>
+        <Link to="/snacks">
+          <button>Back</button>
+        </Link>
+      </div>
+      <div>
+        <Link to={`/snacks/${id}/edit`}>
+          <button>Edit</button>
+        </Link>
+      </div>
+      <div>
+        <button onClick={handleDelete}>Delete</button>
+      </div>
     </div>
   </article>
 }
