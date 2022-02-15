@@ -11,10 +11,10 @@ function SnackEditForm() {
   const [snack, setSnack] = useState({
     name: "",
     image: "",
-    fiber: "",
-    protein: "",
-    added_sugar: "",
-    is_healthy: false,
+    fiber: 0,
+    protein: 0,
+    added_sugar: 0,
+    
   });
 
   const updateSnack = (updatedSnack) => {
@@ -23,9 +23,9 @@ function SnackEditForm() {
       updatedSnack)
       .then(
         () => {
-          navigate(`/snacks/${id}`);
-        },
-        (error) => console.error(error)
+          navigate(`/snacks`);
+        }
+        // (error) => console.error(error)
       )
       .catch((c) => console.warn("catch", c));
   };
@@ -34,20 +34,15 @@ function SnackEditForm() {
     setSnack({ ...snack, [event.target.id]: event.target.value });
   };
 
-  const handleCheckboxChange = () => {
-    setSnack({ ...snack, is_healthy: !snack.is_healthy });
-  };
-
   useEffect(() => {
     axios.get(`${API}/snacks/${id}`).then(
-      (response) => setSnack(response.data),
-      (error) => navigate(`/not-found`)
-    );
-  }, [id, navigate]);
+      (response) => setSnack(response.data.payload)
+    ).catch(()=>navigate("/not-found "))
+  }, [id]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    updateSnack(snack, id);
+    updateSnack(snack);
   };
   return (
     <div className="Edit">
@@ -89,13 +84,7 @@ function SnackEditForm() {
           value={snack.added_sugar}
           onChange={handleTextChange}
         />
-        <label htmlFor="is_healthy">Healthy:</label>
-        <input
-          id="is_healthy"
-          type="checkbox"
-          onChange={handleCheckboxChange}
-          checked={snack.is_healthy}
-        />
+       
 
         <br />
 
