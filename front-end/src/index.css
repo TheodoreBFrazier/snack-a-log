@@ -1,0 +1,58 @@
+body {
+  font-family: Overlock cursive;
+}
+
+h1 {
+  font-family: Carter One;
+  margin-top: 20px;
+}
+
+main {
+  width: 90%;
+  margin: auto;
+}
+
+nav {
+  background-color: rgb(37, 36, 34);
+  display: flex;
+  justify-content: space-between;
+  padding:  15px 45px;
+  margin-bottom: 15px;
+  align-items: center;
+  box-shadow: 2px 2px 4px grey;
+  background-size: cover;
+}
+
+nav button {
+  color: rgb(244, 93, 48);
+
+}
+
+a {
+  color: rgb(235, 94, 40);
+  text-decoration: none;
+  /* padding: 20px;
+  margin: 10px; */
+}
+
+h4 {
+  margin: 0;
+  font-size: 15px;
+  text-align: center;
+}
+
+article {
+  display: flex;
+  /* flex-wrap:; */
+  justify-content: space-between;
+}
+
+img {
+  width: 150px;
+}
+
+.Snacks {
+  width: 150px;
+  padding: 1em;
+  background-color: rgba(255, 252, 242);
+}
