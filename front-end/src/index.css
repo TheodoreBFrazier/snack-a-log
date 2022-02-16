@@ -74,7 +74,9 @@ img.heart {
 
 .Show {
   /* margin-bottom: 100px; */
-  margin: 100px auto;
+  margin: 100px auto; 
+  padding: 50px;
+  box-shadow: 10px 10px  15px gray;
 }
 
 .showNavigation {
