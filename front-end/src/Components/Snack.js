@@ -9,8 +9,10 @@ function Snack({ snack }) {
   return (
     <div className="Snack">
       <img src={snack.image} alt={snack.name}/>
-      <div><Link to={`/snacks/${snack.id}`}><h4>{snack.name}</h4>
-      <HeartHealth snackHealth={snack.is_healthy}/></Link></div>
+      <Link to={`/snacks/${snack.id}`}>
+        <h4>{snack.name}</h4>
+        <h4><HeartHealth snackHealth={snack.is_healthy}/></h4>
+      </Link>
       
       {/* <div>{snack.is_healthy ? (<span><img src={solid} alt=""/> </span>) : (<span><img src={regular} alt=""/> </span>)}</div> */}
     </div>

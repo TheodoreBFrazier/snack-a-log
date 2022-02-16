@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+
 const API = process.env.REACT_APP_API_URL;
 
 function SnackNewForm() {
@@ -54,9 +55,9 @@ function SnackNewForm() {
          <label htmlFor="image">Image:</label>
          <input
            id="image"
+          //  alt={}
            type="text"
            pattern="http[s]*://.+"
-           value="image"
            placeholder="http://"
            onChange={handleTextChange}
          />
@@ -64,19 +65,22 @@ function SnackNewForm() {
          <input
            id="fiber"
            type="number"
-           value={snack.fiber}
+          //  value={snack.fiber}
+           onChange={handleTextChange}
          />
          <label htmlFor="protein">Protein:</label>
          <input
            id="protein"
            type="number"
-           value={snack.protein}
+          //  value={snack.protein}
+          onChange={handleTextChange}
          />
          <label htmlFor="added_sugar">Added Sugar:</label>
          <input
            id="added_sugar"
            type="number"
-           value={snack.added_sugar}
+          //  value={snack.added_sugar}
+          onChange={handleTextChange}
          />
          {/* <label htmlFor="is_healthy">Healthy</label>
          <input
