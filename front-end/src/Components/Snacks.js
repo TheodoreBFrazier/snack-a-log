@@ -18,18 +18,16 @@ function Snacks() {
 
   return (
     <div className="Snacks">
-      <section>
-        <div className="table">
-            {/* <div>{snack.image}</div>
-            <div>{snack.is_healthy}</div>
-            <div>{snack.name}</div> */}
-          <div>
+      {/* <section> */}
+        <article>
           {snacks.map((snack) => {
             return <Snack key={snack.id} snack={snack} />
           })}
-          </div>
-        </div>
-      </section>
+            {/* <div>{snack.image}</div>
+            <div>{snack.is_healthy}</div>
+            <div>{snack.name}</div> */}
+        </article>
+      {/* </section> */}
     </div>
   )
 }
