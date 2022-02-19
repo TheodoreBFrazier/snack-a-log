@@ -1,10 +1,10 @@
-// const checkName = (req, res, next) => {
-//   if (req.body.name) {
-//     next();
-//   } else {
-//     res.status(422).json({success: false, payload: "Must include name field"});
-//   }
-// };
+const checkName = (req, res, next) => {
+  if (req.body.name) {
+    next();
+  } else {
+    res.status(422).json({success: false, payload: "Must include name field"});
+  }
+};
 
 // const checkFavorite = (req, res, next) => {
 //   if(typeof req.body.is_favorite === "boolean"){
