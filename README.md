@@ -1,3 +1,7 @@
+Frontend: https://romantic-einstein-9a7ad6.netlify.app
+Backend:  https://tf-snack-log-be.herokuapp.com
+
+
 # Snack-A-Log Pair Programming Lab
 
 ## Overview
